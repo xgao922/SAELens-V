@@ -260,7 +260,7 @@ class ActivationsStore:
 
         else:
             print(
-                "Warning: Dataset is not tokenized. “
+                "Warning: Dataset is not tokenized."
             )
 
         self.iterable_sequences = self._iterate_tokenized_sequences()
