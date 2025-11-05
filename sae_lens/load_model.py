@@ -36,10 +36,16 @@ def load_model(
             from transformers import ChameleonForConditionalGeneration
             hf_model = ChameleonForConditionalGeneration.from_pretrained(local_model_path)
         elif model_class_name =="HookedLlava" and "llava" in model_name:
+        # elif model_class_name =="HookedLlava" and "mistralai/Mistral-7B-Instruct-v0.2" in model_name:
             from transformers import LlavaForConditionalGeneration
             hf_model=LlavaForConditionalGeneration.from_pretrained(local_model_path)
+            # hf_model=LlavaForConditionalGeneration.from_pretrained(model_name) # MY FIX
+        # elif model_class_name =="HookedLlava" and "llava" in model_name:
         elif model_class_name =="HookedLlava" and "mistralai/Mistral-7B-Instruct-v0.2" in model_name:
-            hf_model = AutoModelForCausalLM.from_pretrained(local_model_path)
+            # hf_model = AutoModelForCausalLM.from_pretrained(local_model_path)
+            # hf_model = AutoModelForCausalLM.from_pretrained(model_name) # MY FIX
+            from transformers import LlavaForConditionalGeneration
+            hf_model=LlavaForConditionalGeneration.from_pretrained(local_model_path) # MY FIX
         else:
             hf_model = AutoModelForSeq2SeqLM.from_pretrained(local_model_path)
     else:
@@ -102,11 +108,12 @@ def load_model(
             Warning("no hf_model for hookllava")
             return HookedLlava.from_pretrained(
                 model_name=model_name, device=device, **model_from_pretrained_kwargs
-            )
+            ) # MY FIX
         else:
+            model_name = 'llava-hf/llava-v1.6-mistral-7b-hf' # MY FIX
             return HookedLlava.from_pretrained(
                 model_name=model_name, hf_model=hf_model, fold_ln=False,
-                center_writing_weights=False,center_unembed=False,
+                center_writing_weights=False,center_unembed=False, vision_tower=hf_model.vision_tower, multi_modal_projector=hf_model.multi_modal_projector,
                 device=device, **model_from_pretrained_kwargs)
     else:  # pragma: no cover
         raise ValueError(f"Unknown model class: {model_class_name}")

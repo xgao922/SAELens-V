@@ -1,0 +1,83 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "test",
+  "dataset_size": 620,
+  "description": "",
+  "download_checksums": {
+    "/data/xgao/code/interpretability/SAELens-V/data/test/test.parquet": {
+      "num_bytes": 2341,
+      "checksum": null
+    }
+  },
+  "download_size": 2341,
+  "features": {
+    "input_ids": {
+      "feature": {
+        "feature": {
+          "dtype": "int32",
+          "_type": "Value"
+        },
+        "_type": "Sequence"
+      },
+      "_type": "Sequence"
+    },
+    "pixel_values": {
+      "feature": {
+        "feature": {
+          "feature": {
+            "feature": {
+              "feature": {
+                "dtype": "float32",
+                "_type": "Value"
+              },
+              "_type": "Sequence"
+            },
+            "_type": "Sequence"
+          },
+          "_type": "Sequence"
+        },
+        "_type": "Sequence"
+      },
+      "_type": "Sequence"
+    },
+    "attention_mask": {
+      "feature": {
+        "feature": {
+          "dtype": "int8",
+          "_type": "Value"
+        },
+        "_type": "Sequence"
+      },
+      "_type": "Sequence"
+    },
+    "image_sizes": {
+      "feature": {
+        "feature": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "_type": "Sequence"
+      },
+      "_type": "Sequence"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 2961,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 620,
+      "num_examples": 5,
+      "dataset_name": "test"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}

@@ -165,7 +165,7 @@ def process_examples(example, processor, cfg):
             full=True
             if text is not None:
                 conversation_content.append({"type": "text", "text": text})
-            elif image is not None:
+            if image is not None:
                 conversation_content.append({"type": "image"})
                 images_in_prompt.append(image)
             else:
@@ -214,7 +214,7 @@ def preprocess_dataset(
     processed_dataset = dataset.map(
         lambda example: process_examples(example, processor, cfg),
         batched=True,
-        batch_size=300,
+        batch_size=2,
         remove_columns=dataset.column_names  
     )
 

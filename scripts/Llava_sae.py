@@ -1,13 +1,22 @@
+import os
+import sys
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "5,6"
+sys.path.insert(0, '/data/xgao/code/interpretability/SAELens-V')
+sys.path.insert(0, '/data/xgao/code/interpretability/TransformerLens-V')
+
 from sae_lens import LanguageModelSAERunnerConfig, SAETrainingRunner
 import argparse
+import sae_lens
+print("sae_lens from:", sae_lens.__file__)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--model_class_name", type=str, default="HookedLlava")
-parser.add_argument("--language_model_name", type=str, default="mistralai/Mistral-7B-Instruct-v0.2")
-parser.add_argument("--local_model_path", type=str)
+parser.add_argument("--language_model_name", type=str, default="mistralai/Mistral-7B-Instruct-v0.2") # mistralai/Mistral-7B-Instruct-v0.2
+parser.add_argument("--local_model_path", type=str, default="llava-hf/llava-v1.6-mistral-7b-hf")
 parser.add_argument("--hook_name", type=str, default="blocks.16.hook_resid_post")
 parser.add_argument("--hook_layer", type=int, default=16)
-parser.add_argument("--dataset_path", type=str, default="./data/processed_dataset")
+parser.add_argument("--dataset_path", type=str, default="/data/xgao/code/interpretability/SAELens-V/data/processed_dataset/batch_1")
 parser.add_argument("--save_path", type=str, default="./model/SAEV_LLaVA_NeXT-7b_OBELICS")
 args = parser.parse_args()
 
@@ -63,7 +72,7 @@ cfg = LanguageModelSAERunnerConfig(
     dead_feature_window=1000,  # would effect resampling or ghost grads if we were using it.
     dead_feature_threshold=1e-4,  # would effect resampling or ghost grads if we were using it.
     # WANDB
-    log_to_wandb=True,  # always use wandb unless you are just testing code.
+    log_to_wandb=False,  # always use wandb unless you are just testing code.
     wandb_project="",
     wandb_log_frequency=30,
     eval_every_n_wandb_logs=20,
@@ -73,7 +82,7 @@ cfg = LanguageModelSAERunnerConfig(
     n_checkpoints=20,
     checkpoint_path=args.save_path,
     dtype="float32",
-    model_from_pretrained_kwargs={"n_devices": 2},
+    model_from_pretrained_kwargs={"n_devices": 1},
 )
 # look at the next cell to see some instruction for what to do while this is running.
 sparse_autoencoder = SAETrainingRunner(cfg).run()

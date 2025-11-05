@@ -1,0 +1,15 @@
+{
+  "sae_lens_version": "3.20.0",
+  "tokenizer_name": "llava-hf/llava-v1.6-mistral-7b-hf",
+  "original_dataset": "/data/xgao/code/interpretability/SAELens-V/data/test",
+  "original_split": "train",
+  "original_data_files": {
+    "train": "test.parquet"
+  },
+  "context_size": 4096,
+  "shuffled": true,
+  "seed": null,
+  "begin_batch_token": "bos",
+  "begin_sequence_token": null,
+  "sequence_separator_token": "eos"
+}

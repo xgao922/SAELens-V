@@ -220,6 +220,8 @@ class ActivationsStore:
         
         # Check if dataset is tokenized
         dataset_sample = next(iter(self.dataset))
+        print(dataset_sample.keys())
+        print(dataset_sample)
 
         # check if it's tokenized
         if "tokens" in dataset_sample.keys():

@@ -5,19 +5,19 @@ import os
 sample_data = {
     # images列：每个元素是一个包含图像路径的列表
     'images': [
-        [["/data/wyx/datasets/COCO/train2017/000000000009.jpg"]],
-        [["/data/wyx/datasets/COCO/train2017/000000000009.jpg"]],
-        [["/data/wyx/datasets/COCO/train2017/000000000009.jpg"]],
-        [["/data/wyx/datasets/COCO/train2017/000000000009.jpg"]],
-        [["/data/wyx/datasets/COCO/train2017/000000000009.jpg"]]
+        ["/data/wyx/datasets/COCO/train2017/000000000009.jpg"],
+        ["/data/wyx/datasets/COCO/train2017/000000000009.jpg"],
+        ["/data/wyx/datasets/COCO/train2017/000000000009.jpg"],
+        ["/data/wyx/datasets/COCO/train2017/000000000009.jpg"],
+        ["/data/wyx/datasets/COCO/train2017/000000000009.jpg"]
     ],
     # texts列：每个元素是一个包含文本的列表，与images中的列表一一对应
     'texts': [
-        [["A cute orange cat sitting on a windowsill looking outside."]],
-        [["A cute orange cat sitting on a windowsill looking outside."]],
-        [["A cute orange cat sitting on a windowsill looking outside."]],
-        [["A cute orange cat sitting on a windowsill looking outside."]],
-        [["A cute orange cat sitting on a windowsill looking outside."]]
+        ["A cute orange cat sitting on a windowsill looking outside."],
+        ["A cute orange cat sitting on a windowsill looking outside."],
+        ["A cute orange cat sitting on a windowsill looking outside."],
+        ["A cute orange cat sitting on a windowsill looking outside."],
+        ["A cute orange cat sitting on a windowsill looking outside."]
     ]
 }
 
